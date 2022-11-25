@@ -61,3 +61,30 @@ const thoughtController = {
         .catch(err => res.json(err));
     },
   
+//Update a thought by id
+updateThought({ params, body }, res) {
+    Thought.findOneAndUpdate(
+      { _id: params.id }, 
+      body, 
+      {new: true, runValidators: true })
+      .then(updatedThought => {
+        if (!updatedThought) {
+          res.status(404).json({ message: 'This id does not return a Thought!' });
+          return;
+        }
+        res.json(updatedThought);
+      })
+      .catch(err => res.status(400).json(err));
+  },
+
+  //Delete a thought
+  removeThought({ params }, res) {
+    Thought.findOneAndDelete({ _id: params.id })
+    .then(deletedThought => {
+      if (!deletedThought) {
+        return res.status(404).json({ message: 'This id does not return a Thought!' });
+      }      
+      res.json(deletedThought);
+    })
+    .catch(err => res.json(err));
+  },
