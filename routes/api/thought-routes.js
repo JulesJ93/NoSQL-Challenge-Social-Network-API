@@ -25,7 +25,3 @@ router.route("/:thoughtId/reactions").post(addReaction);
 router.route("/:thoughtId/:reactionId").delete(removeReaction);
 
 module.exports = router;
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
