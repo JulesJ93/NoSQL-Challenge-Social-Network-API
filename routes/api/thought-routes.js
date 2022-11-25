@@ -9,3 +9,23 @@ const {
   addReaction,
   removeReaction,
 } = require("../../controllers/thought-controller");
+
+
+// router.get('/', getAllThoughts)
+router.route("/").get(getAllThoughts).post(addThought);
+
+router
+  .route("/:id")
+  .get(getThoughtById)
+  .put(updateThought)
+  .delete(removeThought);
+
+router.route("/:thoughtId/reactions").post(addReaction);
+
+router.route("/:thoughtId/:reactionId").delete(removeReaction);
+
+module.exports = router;
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
