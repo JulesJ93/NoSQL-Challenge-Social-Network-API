@@ -1,14 +1,9 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
+import default from "../../controllers/user-controller";
 const {
-  getAllUsers,
-  getUserById,
-  createUser,
-  updateUser,
-  deleteUser,
-  addFriend,
-  removeFriend,
-} = require("../../controllers/user-controller");
+  getAllUsers, getUserById, createUser, updateUser, deleteUser, addFriend, removeFriend,
+} = default;
 
 router.route("/").get(getAllUsers).post(createUser);
 
@@ -19,4 +14,4 @@ router
   .post(addFriend)
   .delete(removeFriend);
 
-module.exports = router;
+export default router;
